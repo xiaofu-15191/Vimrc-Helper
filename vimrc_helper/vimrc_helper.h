@@ -1,5 +1,6 @@
 ﻿#pragma once
 #pragma execution_character_set("utf-8")
+#pragma warning(disable:6031)
 #include "ui_vimrc_helper.h"
 #include<QtWidgets/QWidget>
 #include<QtWidgets/QMainWindow>
@@ -23,18 +24,22 @@
 #include<QGridLayout>
 #include<QFileDialog>
 #include<QComboBox>
+#include<qsizepolicy.h>
 #include "switchbutton.h"
 #include<cstring>
 #include<string>
 #include<cstdlib>
 #include<cstdio>
+#include<vector>
 class vimrc_helper : public QMainWindow
 {
 	Q_OBJECT
 
 public:
 	vimrc_helper(QWidget *parent = nullptr);
+	int total_row=0;
 	char file_path[10010];
+	std::vector<char>file[10010];
 	QAction *open_file_action;
 	QLabel *description_syntax,*description_status,*description_mouse,*description_cursorline,*description_match,*description_autoread,*description_tabstop;
 	QGridLayout *layout;
@@ -43,6 +48,7 @@ public:
 	void main_init();
 	void open_file();
 	void path_view();
+	void file_reading();
 	Ui::vimrc_helperClass ui;
 
 private:
