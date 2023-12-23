@@ -24,14 +24,15 @@
 #include<QGridLayout>
 #include<QFileDialog>
 #include<QComboBox>
-#include<qsizepolicy.h>
+#include<Qsizepolicy.h>
+#include<QLine>
 #include "switchbutton.h"
 #include<cstring>
 #include<string>
 #include<cstdlib>
 #include<cstdio>
 #include<vector>
-const char pre_command[100][100]={" syntax on"," set noswapfile"," set mouse=a"," set cursorline"," set showmatch"," set autoread"," set expandtab"," set autochdir"};
+const char pre_command[100][100]={" syntax on"," set noswapfile"," set mouse=a"," set cursorline"," set showmatch"," set autoread"," set expandtab"," set autochdir"," set smartindent"," set relativenumber"," set number"," set number relativenumber"," set tabstop="};
 class vimrc_helper : public QMainWindow
 {
 	Q_OBJECT
@@ -39,14 +40,16 @@ class vimrc_helper : public QMainWindow
 public:
 	vimrc_helper(QWidget *parent = nullptr);
 	FILE *FILE_IN;
-	int total_row=0,char_compare_nxt[100010];
+	int total_row=0,char_compare_nxt[100010],tabstop;
 	char file_path[10010],str_tmp[100010];
 	std::vector<char>file[10010];
 	QAction *open_file_action;
-	QLabel *description_syntax,*description_mouse,*description_cursorline,*description_match,*description_autoread,*description_tabstop,*description_noswapfile,*description_expandtab,*description_autochdir;
+	QLabel *description_syntax,*description_mouse,*description_cursorline,*description_match,*description_autoread,*description_tabstop,*description_noswapfile,*description_expandtab,*description_autochdir,*description_smartindent,*description_number;
 	QGridLayout *layout;
-	SwitchButton *syntax_on,*mouse_on,*cursorline_on,*match_on,*autoread_on,*noswapfile_on,*expandtab_on,*autochdir_on;
-	QComboBox *tabstop;
+	SwitchButton *syntax_on,*mouse_on,*cursorline_on,*match_on,*autoread_on,*noswapfile_on,*expandtab_on,*autochdir_on,*smartindent_on;
+	QComboBox *tabstop_combobox,*line_number_combobox;
+	void SwitchButton_init();
+	void ComboBox_init();
 	void main_init();
 	void open_file();
 	void path_view();

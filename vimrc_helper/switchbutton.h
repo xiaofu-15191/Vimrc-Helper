@@ -9,7 +9,8 @@ class SwitchButton: public QWidget
 {
 	Q_OBJECT
 public:
-	enum ButtonStyle {
+	enum ButtonStyle
+	{
 		ButtonStyle_Rect=0,     //圆角矩形
 		ButtonStyle_CircleIn=1, //内圆形
 		ButtonStyle_CircleOut=2,//外圆形
