@@ -1,6 +1,7 @@
-﻿#include "vimrc_helper.h"
+﻿#pragma warning(disable:6031)
+//#pragma warning(disable:6262)
+#include "vimrc_helper.h"
 #include<QtWidgets/QApplication>
-
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
