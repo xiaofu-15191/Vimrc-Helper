@@ -25,15 +25,16 @@
 #include<QGridLayout>
 #include<QFileDialog>
 #include<QComboBox>
-#include<Qsizepolicy.h>
+#include<QSizePolicy>
 #include<QLine>
-#include "switchbutton.h"
+#include<QMessageBox>
+#include<QCheckBox>
 #include<cstring>
 #include<string>
 #include<cstdlib>
 #include<cstdio>
 #include<vector>
-const char pre_command[100][100]={" syntax on"," set noswapfile"," set mouse=a"," set cursorline"," set showmatch"," set autoread"," set expandtab"," set autochdir"," set noundofile"," set relativenumber"," set number"," set number relativenumber"," set tabstop="};
+const char pre_command[100][100]={"syntax on","set noswapfile","set mouse=a","set cursorline","set showmatch","set autoread","set expandtab","set autochdir","set noundofile","set relativenumber","set number","set number relativenumber","set tabstop="};
 const char must_input[2000]={R"(set nocompatible
 filetype plugin on
 
@@ -87,18 +88,21 @@ class vimrc_helper : public QMainWindow
 public:
 	vimrc_helper(QWidget *parent = nullptr);
 	FILE *FILE_IN;
-	int total_row=0,char_compare_nxt[100010],tabstop,total_plugin=0;
+	int total_row=0,char_compare_nxt[100010],tabstop,total_plugin=0,saved=1,origin[10];
 	char file_path[10010],str_tmp_1[100010],str_tmp_2[100010];
 	std::vector<char>file[10010];
 	QWidget *plugin_widget;
 	QAction *open_file_action,*edit_plug_action,*save_file_action;
 	QLabel *description_syntax,*description_mouse,*description_cursorline,*description_match,*description_autoread,*description_tabstop,*description_noswapfile,*description_expandtab,*description_autochdir,*description_no_undo,*description_number;
 	QGridLayout *main_layout,*plug_layout;
-	SwitchButton *syntax_on,*mouse_on,*cursorline_on,*match_on,*autoread_on,*noswapfile_on,*expandtab_on,*autochdir_on,*no_undo_on;
+	QCheckBox *syntax_on,*mouse_on,*cursorline_on,*match_on,*autoread_on,*noswapfile_on,*expandtab_on,*autochdir_on,*no_undo_on;
 	QPushButton *start_plugin_button;
 	QComboBox *tabstop_combobox,*line_number_combobox;
 	QMenu *file_menu,*edit_menu;
 	QPlainTextEdit *plugin_editor;
+	QMessageBox close_message;
+	void closeEvent(QCloseEvent *event);
+	void file_unsave();
 	void Action_init();
 	void SwitchButton_init();
 	void ComboBox_init();
