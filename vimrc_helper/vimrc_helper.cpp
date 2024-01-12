@@ -4,7 +4,7 @@ vimrc_helper::vimrc_helper(QWidget *parent):QMainWindow(parent)
 	ui.setupUi(this);
 	this->setWindowTitle("Vimrc Helper");
 	this->setFont(QFont("Fira Code, Microsoft Yahei",11));
-	//this->setWindowIcon(QIcon(":/vimrc_helper/icons/vimrc_helper_icon.png"));
+	this->setWindowIcon(QIcon(":/vimrc_helper/icons/vimrc_helper_icon.png"));
 	main_layout=new QGridLayout();
 	main_init();
 	//open_file();
