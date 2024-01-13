@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/vimrc_helper">
-        <file>icons/vimrc_helper_icon.png</file>
-    </qresource>
-</RCC>
