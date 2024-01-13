@@ -16,3 +16,7 @@ vimrc_helper-Windows/.vs/vimrc_helper/FileContentIndex/d8db6266-1a2a-4047-9b29-d
 vimrc_helper-Windows/vimrc_helper/x64/Debug/vimrc_helper.tlog/vimrc_helper.write.1u.tlog
 vimrc_helper-Windows/vimrc_helper/x64/Debug/vimrc_helper.tlog/vimrc_helper.write.1u.tlog
 vimrc_helper-Windows/vimrc_helper/x64/Debug/vimrc_helper.tlog/vimrc_helper.write.1u.tlog
+qtvars_x64_Debug.props
+props.txt
+qrc_vimrc_helper.cpp
+qtvars_x64_Release.props
