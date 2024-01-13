@@ -1,7 +1,18 @@
-﻿################################################################################
-# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
-################################################################################
-
-/vimrc_helper/vimrc_helper.vcxproj.user
-/vimrc_helper/must_input_vimrc_part.txt
-/x64
+*.user
+build-vimrc_helper-Linux-Desktop_Qt_6_4_3_MinGW_64_bit-Debug/
+vimrc_helper-Windows/x64
+vimrc_helper-Windows/.vs/vimrc_helper/v17/Preview/ipch
+vimrc_helper-Windows/vimrc_helper/must_input_vimrc_part.txt
+vimrc_helper-Windows/.vs/vimrc_helper/v17/Preview/Browse.VC.db
+vimrc_helper-Windows/.vs/vimrc_helper/v17/Preview/Solution.VC.db
+vimrc_helper-Windows/.vs/vimrc_helper/v17/DocumentLayout.json
+vimrc_helper-Windows/.vs/vimrc_helper/v17/fileList.bin
+vimrc_helper-Windows/.vs/vimrc_helper/v17/.suo
+vimrc_helper-Windows/.vs/vimrc_helper/FileContentIndex/7bc59608-810d-435b-9d1f-13c66270e376.vsidx
+vimrc_helper-Windows/.vs/vimrc_helper/FileContentIndex/b466bf51-5666-4828-ada8-7db90bcb5011.vsidx
+vimrc_helper-Windows/.vs/vimrc_helper/FileContentIndex/be2c142f-33e9-4d51-9d0e-23802d116699.vsidx
+vimrc_helper-Windows/.vs/vimrc_helper/FileContentIndex/c67f9766-52e2-45bb-a215-33d35bc3796f.vsidx
+vimrc_helper-Windows/.vs/vimrc_helper/FileContentIndex/d8db6266-1a2a-4047-9b29-dd5e01c71148.vsidx
+vimrc_helper-Windows/vimrc_helper/x64/Debug/vimrc_helper.tlog/vimrc_helper.write.1u.tlog
+vimrc_helper-Windows/vimrc_helper/x64/Debug/vimrc_helper.tlog/vimrc_helper.write.1u.tlog
+vimrc_helper-Windows/vimrc_helper/x64/Debug/vimrc_helper.tlog/vimrc_helper.write.1u.tlog
