@@ -329,7 +329,7 @@ void vimrc_helper::file_reading()
 				int num1=strlen(str_tmp_1);
 				if(str_find(str_tmp_1,"call plug#end()",char_compare_nxt)!=-1) break;
 				total_plugin++;
-				int num2=0;
+				int num2=-1;
 				memset(str_tmp_2,0,sizeof(str_tmp_2));
 				if(num1<2) continue;
 				for(int j=0;j<num1;j++)
@@ -413,7 +413,7 @@ void vimrc_helper::save_file()
 	}
 	switch(errorbells_combobox->currentIndex())
 	{
-		case 0:printf("%s\n",pre_command[12]);break;
+		case 0:break;
 		case 1:printf("%s\n",pre_command[13]);break;
 		case 2:printf("%s\n",pre_command[14]);break;
 		default:break;
