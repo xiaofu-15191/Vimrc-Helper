@@ -97,7 +97,7 @@ public:
 	QGridLayout *main_layout,*plug_layout;
 	QCheckBox *syntax_on,*mouse_on,*cursorline_on,*match_on,*autoread_on,*noswapfile_on,*expandtab_on,*autochdir_on,*no_undo_on;
 	QPushButton *start_plugin_button;
-	QComboBox *tabstop_combobox,*line_number_combobox;
+	QComboBox *tabstop_combobox,*line_number_combobox,*errorbells_combobox;
 	QMenu *file_menu,*edit_menu;
 	QPlainTextEdit *plugin_editor;
 	QMessageBox close_message;

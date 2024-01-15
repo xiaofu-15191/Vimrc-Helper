@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Administrator\source\repos\vimrc_helper\x64\Debug\vimrc_helper.exe</FullPath>
+      <FullPath>C:\Users\Administrator\source\repos\vimrc_helper\vimrc_helper-Windows\x64\Debug\vimrc_helper.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
