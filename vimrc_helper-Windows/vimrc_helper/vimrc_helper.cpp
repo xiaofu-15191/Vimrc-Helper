@@ -359,11 +359,12 @@ void vimrc_helper::save_file()
 		#if _WIN32
 		QString input_path=QFileDialog::getExistingDirectory(nullptr,"保存vimrc文件","C:/");
 		if(input_path[input_path.size()-1]!='\\') input_path+='\\';
+		input_path+="_vimrc";
 		#else
 		QString input_path=QFileDialog::getExistingDirectory(nullptr,"保存vimrc文件","~/");
 		if(input_path[input_path.size()-1]!='/') input_path+='/';
+		input_path+=".vimrc";
 		#endif
-		input_path+="_vimrc";
 		if(input_path.size()<5) return;
 		for(int i=0;i<input_path.size();i++)
 			file_path[i]=input_path[i].toLatin1();

@@ -34,7 +34,7 @@
 #include<cstdlib>
 #include<cstdio>
 #include<vector>
-const char pre_command[100][100]={"syntax on","set noswapfile","set mouse=a","set cursorline","set showmatch","set autoread","set expandtab","set autochdir","set noundofile","set relativenumber","set number","set number relativenumber","set tabstop="};
+const char pre_command[100][100]={"syntax on","set noswapfile","set mouse=a","set cursorline","set showmatch","set autoread","set expandtab","set autochdir","set noundofile","set relativenumber","set number","set number relativenumber","set tabstop=","set vb","set vb t_vb="};
 const char must_input[2000]={R"(set nocompatible
 filetype plugin on
 
@@ -93,7 +93,7 @@ public:
 	std::vector<char>file[10010];
 	QWidget *plugin_widget;
 	QAction *open_file_action,*edit_plug_action,*save_file_action;
-	QLabel *description_syntax,*description_mouse,*description_cursorline,*description_match,*description_autoread,*description_tabstop,*description_noswapfile,*description_expandtab,*description_autochdir,*description_no_undo,*description_number;
+	QLabel *description_syntax,*description_mouse,*description_cursorline,*description_match,*description_autoread,*description_tabstop,*description_noswapfile,*description_expandtab,*description_autochdir,*description_no_undo,*description_number,*description_errorbells;
 	QGridLayout *main_layout,*plug_layout;
 	QCheckBox *syntax_on,*mouse_on,*cursorline_on,*match_on,*autoread_on,*noswapfile_on,*expandtab_on,*autochdir_on,*no_undo_on;
 	QPushButton *start_plugin_button;

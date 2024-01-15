@@ -256,7 +256,7 @@ void vimrc_helper::open_file()
 	#if _WIN32
 	QString input_path=QFileDialog::getOpenFileName(nullptr,"打开vimrc文件","C:/","_vimrc");
 	#else
-	QString input_path=QFileDialog::getOpenFileName(nullptr,"打开vimrc文件","~/",".vimrc");
+    QString input_path=QFileDialog::getOpenFileName(nullptr,"打开vimrc文件","~/","");
 	#endif
 	if(input_path.size()<5) return;
 	for(int i=0;i<input_path.size();i++)
