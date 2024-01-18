@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/Vimrc-Helper">
+        <file>icons/Add.png</file>
+        <file>icons/Delete.png</file>
+        <file>icons/vimrc_helper_icon.png</file>
+        <file>icons/plug.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 3.16)
+project(Vimrc-Helper-Remake LANGUAGES CXX)
+
+include(qt.cmake)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
+find_package(Qt${QT_VERSION_MAJOR}
+    COMPONENTS
+        Core
+        Gui
+        Widgets
+)
+qt_standard_project_setup()
+
+set(PROJECT_SOURCES
+    main.cpp
+    Mainwindow.ui
+    Mainwindow.h
+    Mainwindow.cpp
+    plug_widget.cpp
+    plug_widget.h
+    plug_widget.ui
+)
+
+qt_add_executable(Vimrc-Helper-Remake ${PROJECT_SOURCES})
+
+set_target_properties(Vimrc-Helper-Remake
+    PROPERTIES
+        WIN32_EXECUTABLE TRUE
+)
+
+target_link_libraries(Vimrc-Helper-Remake
+    PUBLIC
+        Qt::Core
+        Qt::Gui
+        Qt::Widgets
+)
