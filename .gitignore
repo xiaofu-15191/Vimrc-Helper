@@ -365,3 +365,6 @@ FodyWeavers.xsd
 out/
 
 .vs/
+
+CMakePresets.json
+CMakeUserPresets.json
