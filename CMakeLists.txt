@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(Vimrc-Helper-Remake LANGUAGES CXX)
+project(Vimrc-Helper LANGUAGES CXX)
 
 include(qt.cmake)
 
@@ -25,14 +25,14 @@ set(PROJECT_SOURCES
     plug_widget.ui
 )
 
-qt_add_executable(Vimrc-Helper-Remake ${PROJECT_SOURCES})
+qt_add_executable(Vimrc-Helper ${PROJECT_SOURCES})
 
-set_target_properties(Vimrc-Helper-Remake
+set_target_properties(Vimrc-Helper
     PROPERTIES
         WIN32_EXECUTABLE TRUE
 )
 
-target_link_libraries(Vimrc-Helper-Remake
+target_link_libraries(Vimrc-Helper
     PUBLIC
         Qt::Core
         Qt::Gui
