@@ -23,6 +23,7 @@ set(PROJECT_SOURCES
     plug_widget.cpp
     plug_widget.h
     plug_widget.ui
+    vimrc_helper.qrc
 )
 
 qt_add_executable(Vimrc-Helper ${PROJECT_SOURCES})

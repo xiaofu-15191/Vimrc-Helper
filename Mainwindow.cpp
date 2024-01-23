@@ -1,9 +1,4 @@
-﻿#pragma warning(disable:26495)
-#pragma warning(disable:26813)
-#pragma warning(disable:26498)
-#pragma warning(disable:6031)
-#pragma warning(disable:26498)
-#include "Mainwindow.h"
+﻿#include "Mainwindow.h"
 Mainwindow::Mainwindow(QWidget *parent): QMainWindow(parent)
 {
 	ui.setupUi(this);
@@ -12,36 +7,6 @@ Mainwindow::Mainwindow(QWidget *parent): QMainWindow(parent)
 Mainwindow::~Mainwindow()
 {
 }
-/*int Mainwindow::str_find(const char *a,const char *b,int *nxt)
-{
-	memset(nxt,0,sizeof(nxt));
-	int len1=strlen(a),len2=strlen(b);
-	int j=0;
-	for(int i=1;i<len2;i++)
-	{
-		while(j&&b[i]!=b[j]) j=nxt[j];
-		if(b[i]==b[j]) nxt[i+1]=++j;
-		else nxt[i+1]=0;
-	}
-	j=0;
-	for(int i=0;i<len1;i++)
-	{
-		while(j&&a[i]!=b[j]) j=nxt[j];
-		if(a[i]==b[j]) j++;
-		if(j==len2) return i-len2+1;
-	}
-	return -1;
-}*/
-/*char *gets_s(char *str,int num)
-{
-	if(fgets(str,num,stdin)!=0)
-	{
-		size_t len=strlen(str);
-		if(len>0&&str[len-1]=='\n') str[len-1]=' ';
-		return str;
-	}
-	return 0;
-}*/
 void Mainwindow::plug_open_message()
 {
 	plug_edit_window->show();
@@ -49,12 +14,11 @@ void Mainwindow::plug_open_message()
 void Mainwindow::init()
 {
 	file_path.clear();
-	ui.centralWidget->setWindowIcon(QIcon(":/Vimrc-Helper/icons/vimrc_helper_icon.png"));
 	plug_edit_window=new plug_widget(this);
-	plug_edit_window->setWindowIcon(QIcon(":/Vimrc-Helper/icons/vimrc_helper_icon.png"));
 	connect(ui.open_file_action,&QAction::triggered,this,&Mainwindow::open_file);
 	connect(ui.save_file_action,&QAction::triggered,this,&Mainwindow::save_file);
 	connect(ui.start_plugin_button,SIGNAL(clicked()),this,SLOT(plug_open_message()));
+	connect(ui.plugin_edit_action,&QAction::triggered,this,&Mainwindow::plug_open_message);
 }
 void Mainwindow::open_file()
 {
@@ -62,7 +26,7 @@ void Mainwindow::open_file()
 	total_plugin=0;
 	file_path.clear();
 	#if _WIN32
-	file_path=QFileDialog::getOpenFileName(nullptr,"打开vimrc文件","C:/","_vimrc;;任意文件 (*.*)");
+	file_path=QFileDialog::getOpenFileName(nullptr,"打开vimrc文件","C:/",".vimrc;;任意文件 (*.*)");
 	#else
 	file_path=QFileDialog::getOpenFileName(nullptr,"打开vimrc文件","/home/",".vimrc;;任意文件 (*.*)");
 	#endif
@@ -166,18 +130,16 @@ void Mainwindow::path_view()
 }
 void Mainwindow::save_file()
 {
-	if(file_path.size()<3)
+	if(file_path.size()<6)
 	{
 		#if _WIN32
 		file_path=QFileDialog::getExistingDirectory(nullptr,"保存vimrc文件","C:/");
-		if(file_path[file_path.size()-1]!='/') file_path+='/';
-		file_path+="_vimrc";
 		#else
 		file_path=QFileDialog::getExistingDirectory(nullptr,"保存vimrc文件","~/");
+		#endif
+		if(file_path.isEmpty()) return;
 		if(file_path[file_path.size()-1]!='/') file_path+='/';
 		file_path+=".vimrc";
-		#endif
-		if(file_path.size()<3) return;
 		path_view();
 	}
 	saved=1;

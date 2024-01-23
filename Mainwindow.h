@@ -1,5 +1,4 @@
 #pragma once
-#pragma warning(disable:26495)
 #include<QtWidgets/QMainWindow>
 #include<QAction>
 #include<QWidget>
@@ -7,6 +6,7 @@
 #include<QChar>
 #include<QFile>
 #include<QMessageBox>
+#include<QCloseEvent>
 #include<cstdio>
 #include<cstring>
 #include<cstdlib>

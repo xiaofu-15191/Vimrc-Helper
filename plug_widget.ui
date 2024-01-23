@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>框中每一行输入一个插件的地址，格式：Github用户名/仓库名</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="vimrc_helper.qrc">
+    <normaloff>:/Vimrc_Helper/icons/vimrc_helper_icon.png</normaloff>:/Vimrc_Helper/icons/vimrc_helper_icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
@@ -26,6 +30,8 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="vimrc_helper.qrc"/>
+ </resources>
  <connections/>
 </ui>

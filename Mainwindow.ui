@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="vimrc_helper.qrc">
-    <normaloff>:/Vimrc-Helper/icons/vimrc_helper_icon.png</normaloff>:/Vimrc-Helper/icons/vimrc_helper_icon.png</iconset>
+    <normaloff>:/Vimrc_Helper/icons/vimrc_helper_icon.png</normaloff>:/Vimrc_Helper/icons/vimrc_helper_icon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">font-family : &quot;Fira Code&quot;,&quot;Ubuntu Mono&quot;,&quot;Microsoft Yahei&quot;;
@@ -58,7 +58,7 @@ font-size:13px;</string>
       <property name="spacing">
        <number>5</number>
       </property>
-      <item row="4" column="2">
+      <item row="7" column="3">
        <widget class="QLabel" name="description_errorbells">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -71,72 +71,35 @@ font-size:13px;</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
-       <widget class="QLabel" name="description_autochdir">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>自动切换目录</string>
+      <item row="2" column="6" colspan="2">
+       <widget class="Line" name="line_9">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="2" column="5" alignment="Qt::AlignHCenter">
-       <widget class="QCheckBox" name="autoread_on">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string/>
+      <item row="6" column="0" colspan="2">
+       <widget class="Line" name="line_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="2" column="3" alignment="Qt::AlignHCenter">
-       <widget class="QCheckBox" name="match_on">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string/>
+      <item row="1" column="2" rowspan="7">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
-      <item row="3" column="3" alignment="Qt::AlignHCenter">
-       <widget class="QCheckBox" name="autochdir_on">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string/>
+      <item row="6" column="3" colspan="2">
+       <widget class="Line" name="line_8">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="description_line_number">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>行号设置</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3" alignment="Qt::AlignHCenter">
+      <item row="1" column="4" alignment="Qt::AlignHCenter">
        <widget class="QCheckBox" name="mouse_on">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -149,59 +112,7 @@ font-size:13px;</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="4">
-       <widget class="QLabel" name="description_no_undo_file">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>关闭撤销文件</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="4">
-       <widget class="QLabel" name="description_tabstop">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>缩进大小</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="description_expandtab">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>空格缩进</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" alignment="Qt::AlignHCenter">
-       <widget class="QCheckBox" name="syntax_on">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
+      <item row="3" column="3">
        <widget class="QLabel" name="description_match">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -214,8 +125,8 @@ font-size:13px;</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1" alignment="Qt::AlignHCenter">
-       <widget class="QCheckBox" name="noswapfile_on">
+      <item row="1" column="7" alignment="Qt::AlignHCenter">
+       <widget class="QCheckBox" name="cursorline_on">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -227,7 +138,33 @@ font-size:13px;</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="4">
+      <item row="5" column="0">
+       <widget class="QLabel" name="description_expandtab">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>空格缩进</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="6">
+       <widget class="QLabel" name="description_no_undo_file">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>关闭撤销文件</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
        <widget class="QLabel" name="description_cursorline">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -240,7 +177,7 @@ font-size:13px;</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="3">
+      <item row="7" column="4">
        <widget class="QComboBox" name="errorbells_combobox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -265,8 +202,22 @@ font-size:13px;</string>
         </item>
        </widget>
       </item>
-      <item row="2" column="4">
-       <widget class="QLabel" name="description_autoread">
+      <item row="1" column="5" rowspan="7">
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="Line" name="line_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" alignment="Qt::AlignHCenter">
+       <widget class="QCheckBox" name="expandtab_on">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -274,7 +225,40 @@ font-size:13px;</string>
          </sizepolicy>
         </property>
         <property name="text">
-         <string>自动读取更改</string>
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3" colspan="2">
+       <widget class="Line" name="line_7">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="description_noswapfile">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>关闭SWAP文件</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="7" alignment="Qt::AlignHCenter">
+       <widget class="QCheckBox" name="no_undo_file_on">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>
@@ -291,7 +275,97 @@ font-size:13px;</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="5">
+      <item row="1" column="1" alignment="Qt::AlignHCenter">
+       <widget class="QCheckBox" name="syntax_on">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QComboBox" name="line_number_combobox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>相对行号</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>绝对行号</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>混合行号</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="description_line_number">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>行号设置</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="7" alignment="Qt::AlignHCenter">
+       <widget class="QCheckBox" name="autoread_on">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="6">
+       <widget class="QLabel" name="description_autoread">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>自动读取更改</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QLabel" name="description_autochdir">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>自动切换目录</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="7">
        <widget class="QComboBox" name="tab_stop_combobox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -321,8 +395,21 @@ font-size:13px;</string>
         </item>
        </widget>
       </item>
-      <item row="3" column="1" alignment="Qt::AlignHCenter">
-       <widget class="QCheckBox" name="expandtab_on">
+      <item row="9" column="0" colspan="8">
+       <widget class="QPushButton" name="start_shortcut_button">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>打开快捷键设置</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="4" alignment="Qt::AlignHCenter">
+       <widget class="QCheckBox" name="match_on">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -334,59 +421,7 @@ font-size:13px;</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="5" alignment="Qt::AlignHCenter">
-       <widget class="QCheckBox" name="cursorline_on">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0" colspan="6">
-       <widget class="QPushButton" name="start_plugin_button">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>打开插件设置</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="description_noswapfile">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>关闭SWAP文件</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="5" alignment="Qt::AlignHCenter">
-       <widget class="QCheckBox" name="no_undo_file_on">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
+      <item row="1" column="3">
        <widget class="QLabel" name="description_mouse">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -399,33 +434,8 @@ font-size:13px;</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
-       <widget class="QComboBox" name="line_number_combobox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <item>
-         <property name="text">
-          <string>相对行号</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>绝对行号</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>混合行号</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="6" column="0" colspan="6">
-       <widget class="QPushButton" name="start_shortcut_button">
+      <item row="3" column="1" alignment="Qt::AlignHCenter">
+       <widget class="QCheckBox" name="noswapfile_on">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -433,7 +443,74 @@ font-size:13px;</string>
          </sizepolicy>
         </property>
         <property name="text">
-         <string>打开快捷键设置</string>
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0" colspan="8">
+       <widget class="QPushButton" name="start_plugin_button">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>打开插件设置</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="4" alignment="Qt::AlignHCenter">
+       <widget class="QCheckBox" name="autochdir_on">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="6">
+       <widget class="QLabel" name="description_tabstop">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>缩进大小</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="Line" name="line_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="6" colspan="2">
+       <widget class="Line" name="line_10">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3" colspan="2">
+       <widget class="Line" name="line_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="6" colspan="2">
+       <widget class="Line" name="line_11">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
