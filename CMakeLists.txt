@@ -20,9 +20,6 @@ set(PROJECT_SOURCES
     Mainwindow.ui
     Mainwindow.h
     Mainwindow.cpp
-    plug_widget.cpp
-    plug_widget.h
-    plug_widget.ui
     vimrc_helper.qrc
 )
 

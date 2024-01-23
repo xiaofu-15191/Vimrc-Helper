@@ -7,10 +7,10 @@
 #include<QFile>
 #include<QMessageBox>
 #include<QCloseEvent>
+#include<QPushButton>
 #include<cstdio>
 #include<cstring>
 #include<cstdlib>
-#include "plug_widget.h"
 #include "ui_Mainwindow.h"
 const char pre_command[100][100]={"syntax on","set noswapfile","set mouse=a","set cursorline","set showmatch","set autoread","set expandtab","set autochdir","set noundofile","set relativenumber","set number","set number relativenumber","set tabstop=","set vb","set noeb"};
 const char must_input[2000]={R"(set nocompatible
@@ -64,6 +64,7 @@ public:
 	QString file_path,str_tmp_1,str_tmp_2;
 	QFile *vimrc_file;
 	QMessageBox close_message;
+	QPushButton *close_message_save,*close_message_unsave,*close_message_cancel;
 	void init();
 	void open_file();
 	void file_reading();
@@ -73,8 +74,8 @@ public:
 	void file_unsave();
 	//int str_find(const char *,const char *,int *);
 public slots:
+	void main_message();
 	void plug_open_message();
 private:
 	Ui::MainwindowClass ui;
-	plug_widget *plug_edit_window;
 };

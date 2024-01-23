@@ -2,23 +2,48 @@
 Mainwindow::Mainwindow(QWidget *parent): QMainWindow(parent)
 {
 	ui.setupUi(this);
+	ui.stackedWidget->setCurrentIndex(0);
 	init();
 }
 Mainwindow::~Mainwindow()
 {
 }
+void Mainwindow::main_message()
+{
+	ui.stackedWidget->setCurrentIndex(0);
+}
 void Mainwindow::plug_open_message()
 {
-	plug_edit_window->show();
+	ui.stackedWidget->setCurrentIndex(1);
 }
 void Mainwindow::init()
 {
 	file_path.clear();
-	plug_edit_window=new plug_widget(this);
+	close_message.setText("文件已修改。是否保存？");
+	close_message_save=close_message.addButton("保存",QMessageBox::AcceptRole);
+	close_message_unsave=close_message.addButton("不保存",QMessageBox::RejectRole);
+	close_message_cancel=close_message.addButton("取消",QMessageBox::NoRole);
+	//action init
 	connect(ui.open_file_action,&QAction::triggered,this,&Mainwindow::open_file);
 	connect(ui.save_file_action,&QAction::triggered,this,&Mainwindow::save_file);
-	connect(ui.start_plugin_button,SIGNAL(clicked()),this,SLOT(plug_open_message()));
+	connect(ui.return_main_action,&QAction::triggered,this,&Mainwindow::main_message);
 	connect(ui.plugin_edit_action,&QAction::triggered,this,&Mainwindow::plug_open_message);
+	//button init
+	connect(ui.general_setting_button,SIGNAL(clicked()),this,SLOT(main_message()));
+	connect(ui.plug_edit_button,SIGNAL(clicked()),this,SLOT(plug_open_message()));
+	//unsave init
+	connect(ui.autochdir_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
+	connect(ui.autoread_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
+	connect(ui.cursorline_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
+	connect(ui.expandtab_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
+	connect(ui.match_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
+	connect(ui.mouse_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
+	connect(ui.noswapfile_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
+	connect(ui.no_undo_file_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
+	connect(ui.syntax_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
+	connect(ui.line_number_combobox,&QComboBox::currentIndexChanged,this,&Mainwindow::file_unsave);
+	connect(ui.errorbells_combobox,&QComboBox::currentIndexChanged,this,&Mainwindow::file_unsave);
+	connect(ui.tab_stop_combobox,&QComboBox::currentIndexChanged,this,&Mainwindow::file_unsave);
 }
 void Mainwindow::open_file()
 {
@@ -31,30 +56,29 @@ void Mainwindow::open_file()
 	file_path=QFileDialog::getOpenFileName(nullptr,"打开vimrc文件","/home/",".vimrc;;任意文件 (*.*)");
 	#endif
 	if(file_path.size()<5) return;
-	path_view();
 	vimrc_file=new QFile(file_path);
 	vimrc_file->open(QFile::ReadOnly);
 	if(!vimrc_file->exists()) return;
 	file_reading();
+	path_view();
 }
 void Mainwindow::file_reading()
 {
-	memset(origin,0,sizeof(origin));
 	while(true)
 	{
 		QByteArray tmp=vimrc_file->readLine();
 		if(tmp.isEmpty()) break;
 		str_tmp_1=tmp;
 		int num=0;
-		if(str_tmp_1.contains(QString(pre_command[0]))) ui.syntax_on->setChecked(1),origin[0]=1;
-		else if(str_tmp_1.contains(QString(pre_command[1]))) ui.noswapfile_on->setChecked(1),origin[1]=1;
-		else if(str_tmp_1.contains(QString(pre_command[2]))) ui.mouse_on->setChecked(1),origin[2]=1;
-		else if(str_tmp_1.contains(QString(pre_command[3]))) ui.cursorline_on->setChecked(1),origin[3]=1;
-		else if(str_tmp_1.contains(QString(pre_command[4]))) ui.match_on->setChecked(1),origin[4]=1;
-		else if(str_tmp_1.contains(QString(pre_command[5]))) ui.autoread_on->setChecked(1),origin[5]=1;
-		else if(str_tmp_1.contains(QString(pre_command[6]))) ui.expandtab_on->setChecked(1),origin[6]=1;
-		else if(str_tmp_1.contains(QString(pre_command[7]))) ui.autochdir_on->setChecked(1),origin[7]=1;
-		else if(str_tmp_1.contains(QString(pre_command[8]))) ui.no_undo_file_on->setChecked(1),origin[8]=1;
+		if(str_tmp_1.contains(QString(pre_command[0]))) ui.syntax_on->setChecked(1);
+		else if(str_tmp_1.contains(QString(pre_command[1]))) ui.noswapfile_on->setChecked(1);
+		else if(str_tmp_1.contains(QString(pre_command[2]))) ui.mouse_on->setChecked(1);
+		else if(str_tmp_1.contains(QString(pre_command[3]))) ui.cursorline_on->setChecked(1);
+		else if(str_tmp_1.contains(QString(pre_command[4]))) ui.match_on->setChecked(1);
+		else if(str_tmp_1.contains(QString(pre_command[5]))) ui.autoread_on->setChecked(1);
+		else if(str_tmp_1.contains(QString(pre_command[6]))) ui.expandtab_on->setChecked(1);
+		else if(str_tmp_1.contains(QString(pre_command[7]))) ui.autochdir_on->setChecked(1);
+		else if(str_tmp_1.contains(QString(pre_command[8]))) ui.no_undo_file_on->setChecked(1);
 		else if(str_tmp_1.contains(QString(pre_command[9]))) ui.line_number_combobox->setCurrentIndex(0);
 		else if(str_tmp_1.contains(QString(pre_command[10])))
 		{
@@ -112,8 +136,7 @@ void Mainwindow::file_reading()
 					}
 				plugins+='\n';
 			}
-			/*Ui_plugin_widget::plugin_editor->setPlainText(plugins);*/
-			plug_edit_window->ui.plug_editor->setPlainText(plugins);
+			ui.plug_editor->setPlainText(plugins);
 		}
 		else if(str_tmp_1.contains(QString(pre_command[13])))
 		{
@@ -143,11 +166,8 @@ void Mainwindow::save_file()
 		path_view();
 	}
 	saved=1;
-	//FILE *must_input=fopen("r","must_input_vimrc_part.txt");
 	vimrc_file=new QFile(file_path);
 	vimrc_file->open(QFile::WriteOnly);
-	//char i;
-	/*while(sscanf(must_input,"%c",&i)) printf("%c",i);*/
 	vimrc_file->write(must_input);
 	vimrc_file->write("\n");
 	if(ui.syntax_on->isChecked()==1)
@@ -191,7 +211,7 @@ void Mainwindow::save_file()
 		case 2:vimrc_file->write(pre_command[14]);vimrc_file->write("\n");break;
 		default:break;
 	}
-	QString tmp=plug_edit_window->ui.plug_editor->toPlainText();
+	QString tmp=ui.plug_editor->toPlainText();
 	if(tmp.size()>5)
 	{
 		vimrc_file->write("call plug#begin('~/.vim/plugged')\n");
@@ -203,6 +223,12 @@ void Mainwindow::save_file()
 				str_tmp_1.push_back(i);
 			else
 			{
+				if(str_tmp_1.size()<2)
+				{
+					str_tmp_1.clear();
+					num=0;
+					continue;
+				}
 				vimrc_file->write("Plug \'");
 				vimrc_file->write(str_tmp_1.toUtf8());
 				vimrc_file->write("\'\n");
@@ -221,6 +247,7 @@ void Mainwindow::save_file()
 		vimrc_file->write("call plug#end()\n");
 	}
 	delete vimrc_file;
+	Mainwindow::setWindowTitle(file_path+" - Vimrc-Helper");
 }
 void Mainwindow::closeEvent(QCloseEvent *event)
 {
@@ -230,26 +257,28 @@ void Mainwindow::closeEvent(QCloseEvent *event)
 		int result=close_message.exec();
 		switch(result)
 		{
-			case QMessageBox::Save:
+			case QMessageBox::AcceptRole:
 			{
 				Mainwindow::save_file();
+				if(!saved) event->ignore();
 				break;
 			}
-			case QMessageBox::Discard:
+			case QMessageBox::RejectRole:
 			{
 				event->accept();
 				break;
 			}
-			case QMessageBox::Cancel:
+			case QMessageBox::NoRole:
 			{
 				event->ignore();
 				break;
 			}
-			default:event->accept();
+			default:event->ignore();
 		}
 	}
 }
 void Mainwindow::file_unsave()
 {
 	saved=0;
+	Mainwindow::setWindowTitle(file_path+" * - Vimrc-Helper");
 }
