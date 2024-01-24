@@ -17,7 +17,10 @@ const char vimrc_file_preset[150]={R"(set nocompatible
 filetype plugin on
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim)"};
-const char other_preset[3000]={R"(map <C-N> :tabnew<CR>
+const char other_preset[3000]={R"(
+set laststatus=2
+set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %c:%l/%L%
+map <C-N> :tabnew<CR>
 map <C-W> :tabclose<CR>
 map <C-S> :w<CR>
 function! s:moveup_line()
