@@ -48,6 +48,13 @@ font-size:13px;</string>
       </property>
      </widget>
     </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="shortcut_edit_button">
+      <property name="text">
+       <string>其他设置</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="1">
      <widget class="QPushButton" name="plug_edit_button">
       <property name="text">
@@ -55,10 +62,10 @@ font-size:13px;</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="2">
+    <item row="1" column="0" colspan="3">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="main_page">
        <layout class="QGridLayout" name="gridLayout_3">
@@ -519,6 +526,31 @@ font-size:13px;</string>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0">
            <widget class="QPlainTextEdit" name="plug_editor"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="other_page">
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="1">
+           <widget class="QRadioButton" name="custom">
+            <property name="text">
+             <string>自定义</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="preset">
+            <property name="text">
+             <string>使用推荐设置</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QPlainTextEdit" name="other_editor"/>
           </item>
          </layout>
         </item>
