@@ -2,7 +2,6 @@
 Mainwindow::Mainwindow(QWidget *parent): QMainWindow(parent)
 {
 	ui.setupUi(this);
-	ui.stackedWidget->setCurrentIndex(0);
 	init();
 }
 Mainwindow::~Mainwindow()
@@ -16,9 +15,27 @@ void Mainwindow::plug_open_message()
 {
 	ui.stackedWidget->setCurrentIndex(1);
 }
+void Mainwindow::shortcut_open_message()
+{
+	ui.stackedWidget->setCurrentIndex(2);
+}
+void Mainwindow::shortcut_edit_message()
+{
+	ui.other_editor->setReadOnly(0);
+}
+void Mainwindow::shortcut_unedit_message()
+{
+	ui.other_editor->setReadOnly(1);
+}
 void Mainwindow::init()
 {
 	file_path.clear();
+	ui.stackedWidget->setCurrentIndex(0);
+	ui.plug_editor->setPlaceholderText("使用vim-plug管理插件，请在其中输入插件的Github仓库地址。");
+	ui.preset->setChecked(1);
+	ui.other_editor->setPlainText(other_preset);
+	ui.other_editor->setReadOnly(1);
+	//close message init
 	close_message.setText("文件已修改。是否保存？");
 	close_message_save=close_message.addButton("保存",QMessageBox::AcceptRole);
 	close_message_unsave=close_message.addButton("不保存",QMessageBox::RejectRole);
@@ -28,9 +45,13 @@ void Mainwindow::init()
 	connect(ui.save_file_action,&QAction::triggered,this,&Mainwindow::save_file);
 	connect(ui.return_main_action,&QAction::triggered,this,&Mainwindow::main_message);
 	connect(ui.plugin_edit_action,&QAction::triggered,this,&Mainwindow::plug_open_message);
+	connect(ui.shortcut_edit_action,&QAction::triggered,this,&Mainwindow::shortcut_open_message);
 	//button init
 	connect(ui.general_setting_button,SIGNAL(clicked()),this,SLOT(main_message()));
 	connect(ui.plug_edit_button,SIGNAL(clicked()),this,SLOT(plug_open_message()));
+	connect(ui.shortcut_edit_button,SIGNAL(clicked()),this,SLOT(shortcut_open_message()));
+	connect(ui.custom,SIGNAL(clicked()),this,SLOT(shortcut_edit_message()));
+	connect(ui.preset,SIGNAL(clicked()),this,SLOT(shortcut_unedit_message()));
 	//unsave init
 	connect(ui.autochdir_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
 	connect(ui.autoread_on,&QCheckBox::clicked,this,&Mainwindow::file_unsave);
@@ -44,6 +65,8 @@ void Mainwindow::init()
 	connect(ui.line_number_combobox,&QComboBox::currentIndexChanged,this,&Mainwindow::file_unsave);
 	connect(ui.errorbells_combobox,&QComboBox::currentIndexChanged,this,&Mainwindow::file_unsave);
 	connect(ui.tab_stop_combobox,&QComboBox::currentIndexChanged,this,&Mainwindow::file_unsave);
+	connect(ui.plug_editor,&QPlainTextEdit::textChanged,this,&Mainwindow::file_unsave);
+	connect(ui.other_editor,&QPlainTextEdit::textChanged,this,&Mainwindow::file_unsave);
 }
 void Mainwindow::open_file()
 {
@@ -64,6 +87,7 @@ void Mainwindow::open_file()
 }
 void Mainwindow::file_reading()
 {
+	QString tmp_other="";
 	while(true)
 	{
 		QByteArray tmp=vimrc_file->readLine();
@@ -143,7 +167,10 @@ void Mainwindow::file_reading()
 			ui.errorbells_combobox->setCurrentIndex(1);
 			if(str_tmp_1.contains(QString(pre_command[14]))) ui.errorbells_combobox->setCurrentIndex(2);
 		}
+		else
+			tmp_other+=str_tmp_1;
 	}
+	ui.other_editor->setPlainText(tmp_other);
 	saved=1;
 	delete vimrc_file;
 }
@@ -168,7 +195,7 @@ void Mainwindow::save_file()
 	saved=1;
 	vimrc_file=new QFile(file_path);
 	vimrc_file->open(QFile::WriteOnly);
-	vimrc_file->write(must_input);
+	vimrc_file->write(vimrc_file_preset);
 	vimrc_file->write("\n");
 	if(ui.syntax_on->isChecked()==1)
 		vimrc_file->write(pre_command[0]),vimrc_file->write("\n");
@@ -245,6 +272,14 @@ void Mainwindow::save_file()
 			num=0;
 		}
 		vimrc_file->write("call plug#end()\n");
+	}
+	tmp=ui.other_editor->toPlainText();
+	if(tmp.size()>5)
+	{
+		str_tmp_1.clear();
+		int num=0;
+		for(auto i:tmp)
+			str_tmp_1.push_back(i);
 	}
 	delete vimrc_file;
 	Mainwindow::setWindowTitle(file_path+" - Vimrc-Helper");

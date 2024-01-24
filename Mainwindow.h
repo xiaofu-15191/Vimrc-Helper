@@ -13,45 +13,82 @@
 #include<cstdlib>
 #include "ui_Mainwindow.h"
 const char pre_command[100][100]={"syntax on","set noswapfile","set mouse=a","set cursorline","set showmatch","set autoread","set expandtab","set autochdir","set noundofile","set relativenumber","set number","set number relativenumber","set tabstop=","set vb","set noeb"};
-const char must_input[2000]={R"(set nocompatible
+const char vimrc_file_preset[150]={R"(set nocompatible
 filetype plugin on
 source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-if &diffopt !~# 'internal'
-  set diffexpr=MyDiff()
-endif
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg1 = substitute(arg1, '!', '\!', 'g')
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg2 = substitute(arg2, '!', '\!', 'g')
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let arg3 = substitute(arg3, '!', '\!', 'g')
-  if $VIMRUNTIME =~ ' '
-	if &sh =~ '\<cmd'
-	  if empty(&shellxquote)
-		let l:shxq_sav = ''
-		set shellxquote&
-	  endif
-	  let cmd = '"' . $VIMRUNTIME . '\diff"'
-	else
-	  let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+source $VIMRUNTIME/mswin.vim)"};
+const char other_preset[3000]={R"(map <C-N> :tabnew<CR>
+map <C-W> :tabclose<CR>
+map <C-S> :w<CR>
+function! s:moveup_line()
+	let cur_pos = getpos('.')
+	if cur_pos[1] == 1
+		return
 	endif
-  else
-	let cmd = $VIMRUNTIME . '\diff'
-  endif
-  let cmd = substitute(cmd, '!', '\!', 'g')
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
-  if exists('l:shxq_sav')
-	let &shellxquote=l:shxq_sav
-  endif
-endfunction)"};
+	let tgt_line = cur_pos[1] - 1
+	let tmp = getline(tgt_line)
+	call setline(tgt_line,getline(cur_pos[1]))
+	call setline(cur_pos[1],tmp)
+	let cur_pos[1] -= 1
+	call setpos('.',cur_pos)
+endfunction
+
+function! s:movedown_line()
+	let cur_pos = getpos('.')
+	if cur_pos[1] == line('$')
+		return
+	endif
+	let tgt_line = cur_pos[1] + 1
+	let tmp = getline(tgt_line)
+	call setline(tgt_line,getline(cur_pos[1]))
+	call setline(cur_pos[1],tmp)
+	let cur_pos[1] += 1
+	call setpos('.',cur_pos)
+endfunction
+
+function! s:moveup_multlines() range
+	let start_mark = getpos("'<")
+	let end_mark = getpos("'>")
+	if start_mark[1] == 1
+		return
+	endif
+	let save_curpos = getpos('.')
+	let buffer_lines = getline(start_mark[1],end_mark[1])
+	call add(buffer_lines, getline(start_mark[1] - 1))
+	call setline(start_mark[1]-1,buffer_lines)
+	let start_mark[1] -= 1
+	let end_mark[1] -= 1
+	let save_curpos[1] -= 1
+	call setpos("'<",start_mark)
+	call setpos("'>",end_mark)
+	call setpos('.',save_curpos)
+endfunction
+
+function! s:movedown_multlines() range
+	let start_mark = getpos("'<")
+	let end_mark = getpos("'>")
+	if end_mark[1] == line('$')
+		return
+	endif
+	let save_curpos = getpos('.')
+	let buffer_lines = [getline(end_mark[1] + 1)]
+	call extend(buffer_lines, getline(start_mark[1],end_mark[1]) )
+	call setline(start_mark[1],buffer_lines)
+	let start_mark[1] += 1
+	let end_mark[1] += 1
+	let save_curpos[1] += 1
+		call setpos("'<",start_mark)
+	call setpos("'>",end_mark)
+	call setpos('.',save_curpos)
+endfunction
+
+noremap <silent> <C-k> :call <SID>moveup_line()<CR>
+noremap <silent> <C-j> :call <SID>movedown_line()<CR>
+inoremap <silent> <C-k> <ESC>:call <SID>moveup_line()<CR>a
+inoremap <silent> <C-j> <ESC>:call <SID>movedown_line()<CR>a
+vnoremap <silent> <C-k> :call <SID>moveup_multlines()<CR>gv 
+vnoremap <silent> <C-j> :call <SID>movedown_multlines()<CR>gv
+)"};
 class Mainwindow: public QMainWindow
 {
 	Q_OBJECT
@@ -76,6 +113,9 @@ public:
 public slots:
 	void main_message();
 	void plug_open_message();
+	void shortcut_open_message();
+	void shortcut_edit_message();
+	void shortcut_unedit_message();
 private:
 	Ui::MainwindowClass ui;
 };
