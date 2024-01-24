@@ -100,8 +100,8 @@ public:
 	Mainwindow(QWidget *parent=nullptr);
 	~Mainwindow();
 	int total_row=0,char_compare_nxt[100010],tabstop,total_plugin=0,saved=1,origin[10],total_shortcuts=0;
-	//QChar file_path[10010],str_tmp_1[100010],str_tmp_2[100010];
-	QString file_path,str_tmp_1,str_tmp_2;
+	QString file_path,str_tmp_1;
+	QByteArray str_tmp_2;
 	QFile *vimrc_file;
 	QMessageBox close_message;
 	QPushButton *close_message_save,*close_message_unsave,*close_message_cancel;

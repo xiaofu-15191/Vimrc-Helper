@@ -195,6 +195,7 @@ void Mainwindow::save_file()
 	saved=1;
 	vimrc_file=new QFile(file_path);
 	vimrc_file->open(QFile::WriteOnly);
+	if(!vimrc_file->exists()) return;
 	vimrc_file->write(vimrc_file_preset);
 	vimrc_file->write("\n");
 	if(ui.syntax_on->isChecked()==1)
@@ -276,10 +277,10 @@ void Mainwindow::save_file()
 	tmp=ui.other_editor->toPlainText();
 	if(tmp.size()>5)
 	{
-		str_tmp_1.clear();
-		int num=0;
+		str_tmp_2.clear();
 		for(auto i:tmp)
-			str_tmp_1.push_back(i);
+			str_tmp_2.append(i.toLatin1());
+		vimrc_file->write(str_tmp_2);
 	}
 	delete vimrc_file;
 	Mainwindow::setWindowTitle(file_path+" - Vimrc-Helper");
