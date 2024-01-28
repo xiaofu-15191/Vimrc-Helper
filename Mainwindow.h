@@ -8,6 +8,7 @@
 #include<QMessageBox>
 #include<QCloseEvent>
 #include<QPushButton>
+#include<QTextCodec>
 #include<cstdio>
 #include<cstring>
 #include<cstdlib>

@@ -30,7 +30,7 @@ void Mainwindow::shortcut_unedit_message()
 void Mainwindow::init()
 {
 	file_path.clear();
-	ui.stackedWidget->setCurrentIndex(0);
+	main_message();
 	ui.plug_editor->setPlaceholderText("使用vim-plug管理插件，请在其中输入插件的Github仓库地址。");
 	ui.preset->setChecked(1);
 	ui.other_editor->setPlainText(other_preset);
@@ -278,8 +278,7 @@ void Mainwindow::save_file()
 	if(tmp.size()>5)
 	{
 		str_tmp_2.clear();
-		for(auto i:tmp)
-			str_tmp_2.append(i.toLatin1());
+		str_tmp_2=tmp.toLocal8Bit();
 		vimrc_file->write(str_tmp_2);
 	}
 	delete vimrc_file;

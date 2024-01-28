@@ -13,6 +13,7 @@ find_package(Qt${QT_VERSION_MAJOR}
         Gui
         Widgets
 )
+find_package(Qt6 REQUIRED COMPONENTS Core5Compat) 
 qt_standard_project_setup()
 
 set(PROJECT_SOURCES
@@ -30,6 +31,7 @@ set_target_properties(Vimrc-Helper
         WIN32_EXECUTABLE TRUE
 )
 
+target_link_libraries(Vimrc-Helper PRIVATE Qt6::Core5Compat)
 target_link_libraries(Vimrc-Helper
     PUBLIC
         Qt::Core
