@@ -30,7 +30,7 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&
 set guifont=JetBrains_Mono:h10
 ```
 
-注意``JetBrains_Mono``替换成你需要的字体名，空格使用下划线代替，大小写不敏感。
+注意 ``JetBrains_Mono`` 替换成你需要的字体名，空格使用下划线代替，大小写不敏感。
 
 ### 设置主题
 
@@ -38,7 +38,7 @@ set guifont=JetBrains_Mono:h10
 
 例如我要使用 onedark，把官方的 onedark.vim 放在 ``~/.vim/colors`` 文件夹中，使用 ``colorscheme onedark`` 加载主题。
 
-但实际上我使用的 onedark 主题还有一个放在autoload中的 onedark.vim，而且放进去了也用不了，必须要作为插件安装才能用。
+但实际上我使用的 onedark 主题还有一个放在 autoload 中的 onedark.vim，而且放进去了也用不了，必须要作为插件安装才能用。
 
 总之就是大部分主题都可以这么安装，特殊情况特殊考虑。
 
@@ -70,11 +70,11 @@ func! CompileRunGcc()
 	endfunc
 ````
 
-第一行表示在普通模式下按 <kbd>F9</kbd> 执行 ``:call CompileRunGcc()`` 即调用 ``CompileRunGcc()`` 函数。第二行至第五行是这个函数的实现。``exec`` 表示命令模式，首先 ``:w`` 保存文件，然后 ``:!g++ % -o %< -Wall -std=c++14``。冒号后面的感叹号表示调用外部命令，接着是g++编译文件。此处的 ``%`` 表示当前文件名（包括扩展名），``%<`` 表示文件名（无扩展名）。
+第一行表示在普通模式下按 <kbd>F9</kbd> 执行 ``:call CompileRunGcc()`` 即调用 ``CompileRunGcc()`` 函数。第二行至第五行是这个函数的实现。``exec`` 表示命令模式，首先 ``w`` 保存文件，然后 ``!g++ % -o %< -Wall -std=c++14``。冒号后面的感叹号表示调用外部命令，接着是g++编译文件。此处的 ``%`` 表示当前文件名（包括扩展名），``%<`` 表示文件名（无扩展名）。
 
 
 
-当然，Vim-script函数的语法肯定不止这么简单。这里有一段vim-script代码，使用 <kbd>Ctrl</kbd>+<kbd>Up</kbd>与 <kbd>Ctrl</kbd>+<kbd>Down</kbd> 上移、下移行。读者可自行理解、复制粘贴使用。
+当然，Vim-script 函数的语法肯定不止这么简单。这里有一段 Vim-script 代码，使用 <kbd>Ctrl</kbd>+<kbd>Up</kbd>与 <kbd>Ctrl</kbd>+<kbd>Down</kbd> 上移、下移行。读者可自行理解、复制粘贴使用。
 
 ```vim
 function! s:moveup_line()

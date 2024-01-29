@@ -278,7 +278,7 @@ void Mainwindow::save_file()
 	if(tmp.size()>5)
 	{
 		str_tmp_2.clear();
-		str_tmp_2=tmp.toLocal8Bit();
+		str_tmp_2=tmp.toUtf8();
 		vimrc_file->write(str_tmp_2);
 	}
 	delete vimrc_file;
