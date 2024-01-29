@@ -12,9 +12,9 @@ Linux：下载压缩包，解压后找到``Vimrc-Helper``，右键属性，勾�
 
 ### 使用
 
-选项对应的vim script配置代码如下：
+选项对应的vim-script配置代码如下：
 
-|vimrc_helper中选项名称|vim script(vimrc)设置代码|
+|vimrc_helper中选项名称|Vim-Script(vimrc)设置代码|
 | ------------ | ------------------ |
 | 语法高亮     | ``syntax on``      |
 | 关闭SWAP文件 | ``set noswapfile`` |
@@ -34,7 +34,7 @@ Linux：下载压缩包，解压后找到``Vimrc-Helper``，右键属性，勾�
 
 插件使用 vim-plug 管理，需要将Release中附带的plug.vim（也可自行上网查找）放在你的 ``.vim/autoload`` 文件夹中，如Linux下的 ``~/.vim/autoload`` 文件夹。
 
-插件设置中需在编辑框中写入插件的作者Github用户名/仓库名，如图（新版有略微不同，但是同理）：
+插件设置需在编辑框中写入插件的 作者Github用户名/仓库名，如图（新版有略微不同，但是同理）：
 
 ![](https://github.com/xiaofu-15191/blog-img/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-01-17%20162725.png?raw=true)
 
